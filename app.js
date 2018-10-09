@@ -11,10 +11,46 @@ GAME RULES:
 
 var scores = [0, 0];
 var roundScore = 0;
-var activePlayer = 1; // 0 -first player, 1 second player
+var activePlayer = 1; // 0 - first player, 1 - second player
+
+//
+
+document.querySelector('.dice').style.display = 'none';
+
+document.getElementById('score-1').textContent = '0';
+document.getElementById('score-2').textContent = '0';
+document.getElementById('current-1').textContent = '0';
+document.getElementById('current-2').textContent = '0';
 
 
-var dice = Math.floor(Math.random() * 6) + 1;
-console.log(dice);
+document.querySelector('.btn-roll').addEventListener('click', function() {
+        // dice, random number
+        var dice = Math.floor(Math.random() * 6) + 1;
 
-document.querySelector('#current-' + activePlayer).textContent = dice;
+        // display result
+        var diceDOM = document.querySelector('.dice')
+        diceDOM.style.display = 'block';
+        diceDOM.src = 'dice-' + dice + '.png';
+
+        //Update round score if the rolled mumber is != 1 
+        if (dice !== 1) {
+            // add score
+            roundScore += dice;
+            document.querySelector('#current-' + activePlayer).textContent = roundScore;
+
+        } else {
+            // next player
+            activePlayer === 1 ? activePlayer = 2 : activePlayer = 1;
+            roundScore = 0;
+
+            document.getElementById('current-1').textContent = '0';
+            document.getElementById('current-2').textContent = '0';
+
+            document.querySelector('.player-1-panel').classList.toggle('active');
+            //document.querySelector('.player-1-panel').classList.remove('active');
+            document.querySelector('.player-2-panel').classList.toggle('active');
+            //document.querySelector('.player-1-panel').classList.add('active');
+            diceDOM.style.display = 'none';
+
+        }
+    });

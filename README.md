@@ -2,6 +2,7 @@
 
 ## Live Demo
 You can play in your web browser
+https://danprzy.github.io/Pig-game/
 
 ## Technologies
 * HTML5
@@ -20,6 +21,5 @@ I've added my own customization to the game according to Jonas's coding challeng
 - The player can choose to 'Hold', which means that his ROUND score gets added to his GLBAL score. After that, it's the next player's turn.
 - The first player to reach 100 points on GLOBAL score wins the game.
 
-## Planned features
 
 
